@@ -12,9 +12,9 @@ The application will be named "Splitter" whereby:
 •	we can see the balances of Alice, Bob and Carol on the Web page.
 •	Alice can use the Web page to split her ether.
 
-LLUISA'S METHOD (V1= this version)
-1. In preparation for testing the smart contracts on the web page (which I did not create yet), I created 1 additional Geth account (for the web tests, I will be reusing the 2 accounts previously created in other lessons)
-2. On the web, Lluisa will be impersonating Alice in account[0], Bob will be account[1] and Carol will hold the newly created account[2]
+LLUISA'S METHOD (V2= this version)
+1. I created 1 additional Geth account (I will be reusing the 2 accounts previously created in other lessons)
+2. Lluisa will be impersonating Alice in account[0], Bob will be account[1] and Carol will hold the newly created account[2]
     account[0]= 0x89063abe69934a06e1a8f636d448725fc8d57cbf
     account[1]= 0x0ca374e9226edfda1bb47ba22cd679c8f2fd150d
     account[2]= 0xb1004fb128ee03ed57e1104285363ac2d46fcd24
