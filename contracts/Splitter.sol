@@ -2,9 +2,9 @@ pragma solidity ^0.4.19;
 
 import "./Robust0a.sol";
 
-contract Splitter {
+contract Splitter is Robust0a{
     address public owner;
-    mapping (address => uint) public pendingWithdrawals; 
+    mapping (address => uint) pendingWithdrawals; 
 
     function Splitter() public {
         owner = msg.sender; 
@@ -12,7 +12,7 @@ contract Splitter {
    
     function withdraw() public { 
         uint amount = pendingWithdrawals[msg.sender];
-        pendingWithdrawals[msg.sender] >= 0;
+        require (pendingWithdrawals[msg.sender] >= 0);
         msg.sender.transfer(amount);
     }
 
@@ -23,7 +23,7 @@ contract Splitter {
         recipient2.pendingWithdrawals(amountToSend);
     } 
 
-    function update(uint remainingBalance) public {
+    function update(uint remainingBalance) private {
         pendingWithdrawals[msg.sender] = remainingBalance;
     }
 
