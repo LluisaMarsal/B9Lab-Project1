@@ -21,13 +21,7 @@ contract Splitter {
         uint amountToSend2 = msg.value/2;
         pendingWithdrawals[recipient1] = amountToSend1;
         pendingWithdrawals[recipient2] = amountToSend2;
-        amountToSend1 + amountToSend2 == msg.value; 
     } 
-    
-    function update(uint remainingBalance) private returns (uint) {
-        pendingWithdrawals[msg.sender] = remainingBalance;
-        return remainingBalance;
-    }
 
     function killMe() public returns (bool) {
         require(msg.sender == owner);
