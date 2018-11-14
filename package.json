@@ -1,0 +1,35 @@
+{
+  "name": "b9lab-project1",
+  "version": "1.0.0",
+  "description": "Splitter project",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LluisaMarsal/B9Lab-Project1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LluisaMarsal/B9Lab-Project1/issues"
+  },
+  "homepage": "https://github.com/LluisaMarsal/B9Lab-Project1#readme",
+  "devDependencies": {
+    "create-html": "^4.1.0",
+    "file-loader": "^2.0.0",
+    "truffle": "^4.1.13",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "jquery": "^3.3.1",
+    "truffle-contract": "^3.0.6",
+    "web3": "^0.20.7"
+  }
+}
