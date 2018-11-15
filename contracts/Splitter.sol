@@ -2,11 +2,11 @@ pragma solidity ^0.4.19;
 
 contract Splitter {
     address public owner;
-    address onlyOwner = owner;
-    mapping (address => uint) pendingWithdrawals; 
+    mapping (address => uint) public pendingWithdrawals; 
 
     event LogWithdrawl(address indexed owner, uint amount);
-    event LogTransferSharedEther(address indexed recipient1, address indexed recipient2, uint amountToSend1, uint amountToSend2);
+    event LogTransferSharedEther(address msg.sender, address recipient1, address recipient2, uint msg.value);
+    event LogOwnerChanged(address msg.sender, address newOwner);
     
     function Splitter() public {
         owner = msg.sender; 
@@ -22,16 +22,19 @@ contract Splitter {
 
     function transferSharedEther(address  recipient1, address  recipient2) public payable {
         require (msg.value % 2 == 0);
-        uint amountToSend1 = msg.value/2;
-        uint amountToSend2 = msg.value/2;
-        pendingWithdrawals[recipient1] += amountToSend1;
-        pendingWithdrawals[recipient2] += amountToSend2;
-        LogTransferSharedEther(recipient1, recipient2, amountToSend1, amountToSend2);
+        if (msg.value % 2 != 0) {
+            pendingWithdrawals[owner];
+        }
+        uint half = msg.value/2;
+        pendingWithdrawals[recipient1] += half1;
+        pendingWithdrawals[recipient2] += half2;
+        LogTransferSharedEther(msg.sender, recipient1, recipient2, msg.value);
     } 
     
-    function changeOwner(address newOwner) public onlyOwner {
-        if onlyOwner = owner;
+    function changeOwner(address newOwner) public {
+        require(msg.sender == owner);
         owner = newOwner;
+        LogOwnerChanged(msg.sender, newOwner);
     }
 
     function killMe() public returns (bool) {
