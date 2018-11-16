@@ -5,8 +5,8 @@ contract Splitter {
     mapping (address => uint) public pendingWithdrawals; 
 
     event LogWithdrawl(address indexed owner, uint amount);
-    event LogTransferSharedEther(address msg.sender, address recipient1, address recipient2, uint msg.value);
-    event LogOwnerChanged(address msg.sender, address newOwner);
+    event LogTransferSharedEther(address sender, address recipient1, address recipient2, uint value);
+    event LogOwnerChanged(address owner, address newOwner);
     
     function Splitter() public {
         owner = msg.sender; 
@@ -23,18 +23,18 @@ contract Splitter {
     function transferSharedEther(address  recipient1, address  recipient2) public payable {
         require (msg.value % 2 == 0);
         if (msg.value % 2 != 0) {
-            pendingWithdrawals[owner];
+            pendingWithdrawals[owner] += msg.value - half*2;
         }
         uint half = msg.value/2;
-        pendingWithdrawals[recipient1] += half1;
-        pendingWithdrawals[recipient2] += half2;
+        pendingWithdrawals[recipient1] += half;
+        pendingWithdrawals[recipient2] += half;
         LogTransferSharedEther(msg.sender, recipient1, recipient2, msg.value);
     } 
     
     function changeOwner(address newOwner) public {
         require(msg.sender == owner);
         owner = newOwner;
-        LogOwnerChanged(msg.sender, newOwner);
+        LogOwnerChanged(owner, newOwner);
     }
 
     function killMe() public returns (bool) {
