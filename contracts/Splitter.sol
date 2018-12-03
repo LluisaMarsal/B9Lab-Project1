@@ -14,17 +14,14 @@ contract Splitter {
    
     function withdraw() public { 
         uint amount = pendingWithdrawals[msg.sender];
-        require (amount >= 0);
+        require(amount >= 0);
         pendingWithdrawals[msg.sender] = 0; 
         LogWithdrawl(msg.sender, amount);
         msg.sender.transfer(amount);
     }
 
     function transferSharedEther(address  recipient1, address  recipient2) public payable {
-        require (msg.value % 2 == 0);
-        if (msg.value % 2 != 0) {
-            pendingWithdrawals[owner] += msg.value - half*2;
-        }
+        require(msg.value % 2 == 0);
         uint half = msg.value/2;
         pendingWithdrawals[recipient1] += half;
         pendingWithdrawals[recipient2] += half;
